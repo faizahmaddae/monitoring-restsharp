@@ -87,7 +87,7 @@ class Provider
         return myClient;
     }
 
-    public async Task DeleteClientAsync(int? id, string token)
+    public async Task<Boolean> DeleteClientAsync(int? id, string token)
     {
         string baseUrl = "https://api.daykundi.com/";
         string endpoint = "api/client/" + id;
@@ -103,7 +103,8 @@ class Provider
         if (response.StatusCode == System.Net.HttpStatusCode.OK)
         {
             // Request succeeded, print the response content to the console
-            Console.WriteLine(response.Content);
+            // Console.WriteLine(response.Content);
+            return true;
         }
         else
         {
@@ -112,7 +113,7 @@ class Provider
             Console.WriteLine("StatusCode: " + response.StatusCode);
             Console.WriteLine("StatusDescription: " + response.StatusDescription);
             Console.WriteLine("Content: " + response.Content);
-
+            return false;
         }
     }
 
