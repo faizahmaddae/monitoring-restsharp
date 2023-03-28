@@ -63,6 +63,7 @@ class Provider
 
         if (response.StatusCode == System.Net.HttpStatusCode.OK)
         {
+
             // Request succeeded, print the response content to the console
             JObject json = JObject.Parse(response.Content!);
             myClient = JsonConvert.DeserializeObject<Client>(json["data"]!["client"]!.ToString());
@@ -116,7 +117,6 @@ class Provider
             return false;
         }
     }
-
 
     public async Task<Client?> UpdateClientAsync(Client? myClient, string token){
         string baseUrl = "https://api.daykundi.com/";
